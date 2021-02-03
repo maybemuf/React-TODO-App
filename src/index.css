@@ -1,0 +1,468 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap');
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #F8F8F8;
+  height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#root {
+  position:  relative;
+  font-family: "Josefin Sans";
+  width: 100vw;
+  background-attachment: local;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 35%;
+}
+
+.container {
+  margin: 0 auto;
+  width: 85%;
+}
+
+.todo_header {
+  padding-top: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo_header h1 {
+  font-weight: 700;
+  letter-spacing: 13px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.switch_btn {
+  height: 30px;
+  width: 30px;
+  transition: transform .1s linear;
+}
+
+.switch_btn:hover {
+  cursor: pointer;
+}
+
+.switch_btn:active {
+  transform: scale(.9);
+}
+
+.todo_form {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.todo_input {
+  font-family: "Josefin Sans";
+  font-size: 0.9em;
+  box-sizing: border-box;
+  color: #B3B2B6;
+  font-weight: 700;
+  width: 100%;
+  height: 55px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding-left: 45px;
+}
+
+.todo_input::placeholder {
+  color:#B3B2B6;
+}
+
+.todo_listbox{
+  box-shadow: 0 5px 6px rgb(231, 228, 228);
+}
+
+.list_placeholder {
+  height: 405px;
+  background-color: #fff;
+  margin-top: 20px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.list_placeholder h2 {
+  text-align: center;
+  color: #89898d;
+  font-size: 0.9em;
+  margin: 0;
+  padding: 0;
+}
+
+.todo_list{
+  position: relative;
+  height: 350px;
+  overflow: auto;
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 20px;
+  margin-bottom: 0;
+  overflow-y: auto;
+  border-radius: 5px 5px 0 0;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+.wrapper_div {
+  height: 55px;
+  position: relative;
+  font-size: 0.9em;
+  font-weight: 700;
+  color: #89898d;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.todo_list_item{
+  background-color: #fff;
+  border-bottom: 1px solid #EAEAEE;
+}
+
+/* .todo_list_item:hover{
+  cursor: grab;
+} */
+
+.todo_list_item_text{
+  position: absolute;
+  margin: 0;
+  overflow-x: hidden;
+  white-space: nowrap;
+  margin-left: 30px;
+  transition: margin-left 1s ease-in;
+  z-index: 1000;
+}
+
+.todo_list_item:first-child {
+  border-radius: 5px 5px 0 0;;
+}
+
+.todo_list_checkbox{
+  box-sizing: inherit;
+  height: 0;
+  width: 0;
+  padding: 0;
+  margin: 0;
+  visibility: hidden;
+}
+
+.checkbox_form{
+  margin-top: -2px;
+  display: flex;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1001;
+  background-color: #fff;
+  box-shadow: -4px 0px 6px 15px  #fff, -16px 0 10px 17px #fff;
+}
+
+.checkbox_form:hover {
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
+.checkbox_label {
+  background-color: #fff;
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid lightgray;
+  border-radius: 50%;
+}
+
+.task_done .checkbox_form {
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
+.task_done .checkbox_form {
+  justify-content: center;
+  align-items: center;
+}
+
+.task_done .checkbox_label {
+  background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  border: none;
+}
+
+.task_done .checkbox_label::after {
+  position:absolute;
+  left: 3px;
+  top: -1px;
+  content: "\2713";
+  color: #ffffff;
+  font-size: .85em;
+}
+
+.task_done .todo_list_item_text {
+  text-decoration: line-through;
+  color: #BFBFC1;
+}
+
+.checkbox_label:hover{
+  width: 16px;
+  height: 16px;
+  border:  none;
+  cursor: pointer;
+}
+
+.remove_btn {
+  position: absolute;
+  right: 10px;
+  font-size: 1.4em;
+  color: #6d6d72;
+  font-family: 'Hachi Maru Pop', cursive;
+  border: none;
+  background-color: #fff;
+  margin-left: auto;
+  outline: none;
+  padding: 0 3px 3px 7px;
+  background-color: #fff;
+  box-shadow: -7px 0px 13px 8px #fff, 10px 0 5px 5px #fff;
+  z-index: 1002;
+}
+
+.remove_btn:hover{
+  cursor: pointer;
+}
+
+.todo_status {
+  font-weight: 700;
+  height: 55px;
+  background-color: #fff;
+  border-top: 1px solid #EAEAEE;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 2px 3px lightgrey;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0  15px;
+}
+
+.todo_status span {
+  font-weight: 700;
+  font-size: 14px;
+  color: #BFBFC1;
+}
+
+.todo_status button {
+  font-family: "Josefin Sans";
+  font-weight: 700;
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: #fff;
+  outline: none;
+  color: #BFBFC1;
+  transition: color .2s linear;
+}
+
+.todo_status button:hover{
+  cursor: pointer;
+  color: #8b8b8e;
+}
+
+.todo_navigation{
+  margin-top: 20px;
+  height: 55px;
+  background-color: #fff;
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 0 2px 3px lightgrey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo_navigation button {
+  font-family: "Josefin Sans";
+  font-weight: 700;
+  font-size: 1em;
+  color: #95959D;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  margin-right: 20px;
+  transition: color .2s linear;
+}
+
+.todo_navigation button:hover {
+  cursor: pointer;
+  color:#525166;
+}
+
+.todo_navigation button:last-child {
+  margin-right: 0;
+}
+
+.todo_navigation .selected  {
+  color:#4F86F5;
+}
+
+.todo_navigation .selected:hover {
+  color:#4F86F5;
+}
+
+.light_theme #root {
+  background-image: url("images/bg-mobile-light.jpg");
+}
+
+/*       DARK-THEME        */
+.dark_theme{
+  background-color: #161622;
+}
+.dark_theme #root {
+  background-image: url("images/bg-mobile-dark.jpg");
+}
+
+.dark_theme .todo_input {
+  font-family: "Josefin Sans";
+  color:#B8BAD3;
+  background-color: #25273C;
+}
+
+.dark_theme .todo_input::placeholder {
+  color:#65677E;
+}
+
+.dark_theme .todo_listbox{
+  box-shadow: 0 5px 6px rgb(18, 18, 18);
+}
+.dark_theme .todo_list {
+  background-color:#25273C;
+}
+
+.dark_theme .list_placeholder {
+  background-color:#25273C;
+  color:#B8BAD3;
+}
+
+.dark_theme .list_placeholder h2 {
+  color:#B8BAD3;
+}
+
+.dark_theme .todo_list_item {
+  background-color:#25273C;
+  border-color: #383A4F;
+  color:#B8BAD3;
+}
+
+.dark_theme .wrapper_div {
+  color:#B8BAD3;
+}
+
+.dark_theme .checkbox_form{
+  background-color: #383A4F;
+  box-shadow: -4px 0px 6px 15px  #25273C, -16px 0 10px 17px #25273C;
+}
+
+.dark_theme .checkbox_form:hover {
+  background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
+.dark_theme .checkbox_label {
+  background-color:#25273C;
+  border: 2px solid #383A4F;
+}
+
+.dark_theme .checkbox_label:hover {
+  width: 16px;
+  height: 16px;
+  border:  none;
+}
+
+.dark_theme .task_done .todo_list_item_text {
+  color: #4C4E63;
+}
+
+.dark_theme .remove_btn {
+  background-color: #25273C;
+  box-shadow: -7px 0px 13px 8px #25273C, 10px 0 5px 5px #25273C;
+}
+
+.dark_theme .todo_status {
+  background-color:#25273C;
+  box-shadow: none;
+  border-top: 1px solid #383A4F;
+}
+
+.dark_theme .todo_status span {
+  color: #4C4E63;
+}
+
+.dark_theme .todo_status button {
+  background-color:#25273C;
+  color: #4C4E63;
+}
+
+.dark_theme .todo_status button:hover {
+  color: #B8BAD3;
+}
+
+.dark_theme .todo_navigation {
+  background-color:#25273C;
+  box-shadow: 0 2px 3px rgb(18, 18, 18);
+}
+
+.dark_theme .todo_navigation button {
+  background-color:#25273C;
+  color: #4C4E63;
+}
+
+.dark_theme .todo_navigation button:hover {
+  color: #B8BAD3;
+}
+
+.dark_theme .todo_navigation .selected {
+  color:#4F86F5;
+}
+
+.dark_theme .todo_navigation .selected:hover {
+  color:#4F86F5;
+}
+
+
+/*-------------------------MEDIA QUERIES-------------------------*/
+
+@media (min-width: 420px) { 
+  .light_theme #root {
+    background-image: url("images/bg-desktop-light.jpg");
+  }
+
+  .dark_theme #root {
+    background-image: url("images/bg-desktop-dark.jpg");
+  }
+
+  .container {
+    width: 400px;
+  }
+ }
+
+ @media (min-width: 800px) {
+  .container {
+    width: 600px;
+  }
+ }
