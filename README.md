@@ -1,4 +1,4 @@
-# **My first React app.**
+# **REACT TODO APP.**
 ### It's a simple todo app that helps managing with your tasks and makes you more productive. *At least i hope it is :)*
 Main features:
   * Create/remove task.
