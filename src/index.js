@@ -85,9 +85,15 @@ class TODOApp extends React.Component {
     }
 
     handleInputChange(event) {
-        this.setState({
-            inputValue: event.target.value
-        });
+        if(event.target.value.includes(";")) {
+            alert("Sorry, you cant use \";\" untill i fix it :)")
+        }
+        else{
+            this.setState({
+                inputValue: event.target.value
+            });
+        }
+        
     }
 
     handleInputSumbit(event){
@@ -98,11 +104,7 @@ class TODOApp extends React.Component {
 
         if(this.state.inputValue.trim() === '') event.preventDefault();
         else if (check) {
-            let newTaskList = this.state.taskList;
-            if(newTaskList[0].task === "Create a new TODO!" && newTaskList[0].done === false) {
-                newTaskList[0].done = true;
-                this.checkForCompleted();
-            }
+            let newTaskList = Array.isArray(this.state.taskList) ? this.state.taskList : [] ;
             this.createTask(newTaskList, this.state.inputValue);
             localStorage.setItem("TaskList", newTaskList.map((item) => JSON.stringify(item)).join(";"));
             this.setState({
@@ -264,7 +266,7 @@ class TODOList extends React.Component {
         let item = event.target;
         if(item.tagName !== "LI" ) item = item.closest("li");
         let textBox = item.querySelector(".todo_list_item_text")
-        if(textBox.offsetWidth > item.offsetWidth) {
+        if(textBox.offsetWidth > item.offsetWidth - 30) {
             textBox.style.marginLeft = -(textBox.offsetWidth - item.offsetWidth + 70) + "px";
         }
     }
@@ -279,8 +281,8 @@ class TODOList extends React.Component {
     render(){
         if(this.props.showList === "all") {
             return (
-                <ul className="todo_list">
-                    {this.props.taskList.map((item, index) => <li key={index} className="todo_list_item">
+                <ul className="todo_list" id="items">
+                    {this.props.taskList.map((item, index) => <li key={index} className="todo_list_item" onMouseDown={this.handleDnD}>
                         <div className="wrapper_div">
                             <form className="checkbox_form">
                                 <label className="checkbox_label">
